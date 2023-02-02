@@ -1,0 +1,19 @@
+{
+  "name": "local",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "vue": "^3.2.45",
+    "vue-router": "^4.1.6"
+  },
+  "devDependencies": {
+    "@originjs/vite-plugin-federation": "^1.2.1",
+    "@vitejs/plugin-vue": "^4.0.0",
+    "vite": "^4.0.0"
+  }
+}

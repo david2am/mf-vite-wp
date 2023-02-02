@@ -1,0 +1,20 @@
+{
+  "name": "mfe-demo-vite-webpack",
+  "version": "1.0.0",
+  "description": "This is a micro frontend example, remote exposes code through Webpack and host uses it with Vite",
+  "author": "dvccueter@gmail.com",
+  "license": "ISC",
+  "private": false,
+  "workspaces": {
+    "packages": [
+      "remote",
+      "host"
+    ]
+  },
+  "scripts": {
+    "dev": "lerna run dev"
+  },
+  "devDependencies": {
+    "lerna": "^6.4.1"
+  }
+}
