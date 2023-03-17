@@ -4,7 +4,7 @@
   "description": "This is a micro frontend example, remote exposes code through Webpack and host uses it with Vite",
   "author": "dvccueter@gmail.com",
   "license": "ISC",
-  "private": false,
+  "private": true,
   "workspaces": {
     "packages": [
       "remote",
