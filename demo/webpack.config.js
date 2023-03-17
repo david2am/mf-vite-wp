@@ -1,23 +1,15 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
-const { VueLoaderPlugin } = require("vue-loader");
 
+const deps = require("./package.json").dependencies;
 module.exports = {
   output: {
-    publicPath: "http://localhost:8081/",
-    uniqueName: "remoteApp",
-    scriptType: "text/javascript",
-  },
-
-  resolve: {
-    extensions: [".tsx", ".ts", ".vue", ".jsx", ".js", ".json"],
+    publicPath: "http://localhost:8082/",
   },
 
   devServer: {
-    port: 8081,
-    hot: true,
+    port: 8082,
     historyApiFallback: true,
-    allowedHosts: "all",
   },
 
   module: {
@@ -27,18 +19,11 @@ module.exports = {
         loader: "vue-loader",
       },
       {
-        test: /\.tsx?$/,
-        use: [
-          "babel-loader",
-          {
-            loader: "ts-loader",
-            options: {
-              transpileOnly: true,
-              appendTsSuffixTo: ["\\.vue$"],
-              happyPackMode: true,
-            },
-          },
-        ],
+        test: /\.(ts|tsx|js|jsx)$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader",
+        },
       },
       {
         test: /\.(css|s[ac]ss)$/i,
@@ -47,10 +32,16 @@ module.exports = {
     ],
   },
 
+  resolve: {
+    extensions: [".tsx", ".ts", ".vue", ".jsx", ".js", ".json"],
+    alias: {
+      vue: "vue/dist/vue.js",
+    },
+  },
+  
   plugins: [
-    new VueLoaderPlugin(),
     new ModuleFederationPlugin({
-      name: "app2",
+      name: "demo",
       filename: "remoteEntry.js",
       remotes: {},
       exposes: {

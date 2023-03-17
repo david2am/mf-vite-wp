@@ -4,6 +4,7 @@ import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 import federation from "@originjs/vite-plugin-federation";
 
+const remoteUrl = 'http://localhost:8081'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
@@ -12,12 +13,11 @@ export default defineConfig({
       name: "host",
       remotes: {
         app2: {
-          external: "https://98sbxw-8081.preview.csb.app/remoteEntry.js",
+          external: `${remoteUrl}/remoteEntry.js`,
           format: "var",
           from: "webpack",
         },
       },
-      shared: ["vue"],
     }),
   ],
   resolve: {
